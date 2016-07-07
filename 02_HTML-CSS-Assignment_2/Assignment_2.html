@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <title>JavaScript Color Guessing Game</title>
+</head>
+    <body onload="do_game()">
+        <script>
+        var html_colors=[
+            "aqua", "beige","blue","yellow","cyan","gold",
+            "white","gray","red","green","orange","magenta"];
+
+        function do_game()
+        {
+            html_colors.sort();
+            //Convert all color names to upper case and compare only with upper case
+            html_colors.forEach(convertCase);
+            //alert(html_colors);
+            var response, finished, numAttempts;
+
+            finished=false;
+            var randomIndex = Math.floor(Math.random()* html_colors.length);
+            var target_color = html_colors[randomIndex];
+            alert("Max colors is "+html_colors.length + " Random index is "+randomIndex+" color is "+target_color);
+            numAttempts=0;
+            target_color = target_color.toUpperCase();
+
+            do{
+                numAttempts++;
+                response = prompt("I'm thinking of one of these colors:\n"+html_colors.join()+"\nWhat color am I thinking of?");
+                response = response.toUpperCase();
+                if (html_colors.indexOf(response) == -1)
+                {
+                    alert("Sorry I don't recognize your color! Please try again.");
+                    continue;
+                }
+
+                if (response ==  target_color)
+                {
+                    myBody=document.getElementsByTagName("body")[0];
+                    myBody.style.background=target_color;
+                    alert("You guessed correctly in "+numAttempts+" attempts");
+                    finished = true;
+                }
+                else if (response < target_color)
+                {
+                    alert("Your input is alphabetically lower than mine. Please try again!");
+                }
+                else {
+                    alert("Your input is alphabetically higher than mine. Please try again!");
+                }
+            }while(finished == false);
+        }
+
+        function convertCase(item, index)
+        {
+            html_colors[index] = item.toUpperCase();
+        }
+        </script>
+    </body>
+</html>
