@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assignment-1 Input form for dating site</title>
+        <meta name="author" content="Vani Thilagar">
+    </head>
+    <body>
+        <h1>Form for assignment 1</h1>
+        <form method="post" enctype="multipart/form-data"
+              action="http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
+        	<fieldset>
+            <legend>Your face</legend>
+            <label for="fileToUpload">Your image:</label>
+            <input type="file" id="fileToUpload" name="fileToUpload" required>
+
+            <label for="imagePreview">Image Preview:</label>
+            <img src="#" id="preview"/>
+                <!-- <p>Press this button to send it</p>
+                <input type="submit" value="Upload the file"> -->
+        	</fieldset> <br>
+          <fieldset>
+        		<legend>Your general details</legend>
+            <label for="p_name">Name:</label>
+        		<input type="text" id="p_name" name="p_name" required> <br>
+            <!-- Gender select -->
+            <label>Gender:</label>
+            <label for="male">Male</label>
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="female">Female</label>
+            <input type="radio" id="female" name="gender" value="female" required><br>
+
+            <label for="age">Age:</label>
+        		<input type="number" id="age" name="age" required> <br>
+
+            <label for="dob">Date of birth:</label>
+        		<input type="date" id="dob" name="dob" required> <br>
+
+            <label for="country">Which country:</label>
+            <select name="cities" id="country">
+              <option value="none">None</option>
+              <option value="hk">Hong Kong</option>
+              <option value="ca">Canada</option>
+              <option value="usa">USA</option>
+              <option value="uk">UK</option>
+              <option value="sg">Singapore</option>
+            </select>
+        	</fieldset> <br>
+          <fieldset>
+            <legend>Your indicators</legend>
+            <label for="height">Height:</label>
+            <span class="low_end">Short</span><input type="range" name="height" id="height"><span class="high_end">Tall</span><br>
+            <label for="salary">Salary:</label>
+            <span class="low_end">Poor</span><input type="range" name="salary" id="salary"><span class="high_end">Rich</span><br>
+          </fieldset>
+          <fieldset>
+        		<legend>Your contact information</legend>
+            <label for="email">Email:</label>
+        		<input type="email" id="email" name="email" required> <br>
+            <label for="tel">Mobile:</label>
+        		<input type="tel" id="tel" name="tel" required> <br>
+            <label for="address">Address:</label>
+            <textarea rows="3" cols="60" name="address" placeholder="Address">
+            </textarea><br />
+            <label for="contact_method">Method to contact you:</label>
+                <input type="checkbox" name="contact_method" value="email">Email
+                <input type="checkbox" name="contact_method" value="whats_app">WhatsApp
+                <input type="checkbox" name="contact_method" value="app_chat">InApp Chat
+        	</fieldset> <br>
+        	<input type="submit" value="Send">
+        </form>
+    </body>
+</html>
