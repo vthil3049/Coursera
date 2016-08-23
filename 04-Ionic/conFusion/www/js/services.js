@@ -26,18 +26,18 @@ angular.module('conFusion.services', ['ngResource'])
                 // that returns a selected promotion.
                 this.getPromotion = function() {
                     return   $resource(baseURL+"promotions/:id");;
-                }
-
+                };
 
         }])
+        .factory('corporateFactory', ['$resource', 'baseURL', function($resource, baseURL) {
 
-        .factory('corporateFactory', ['$resource', 'baseURL', function($resource,baseURL) {
-
+            this.query = function(){
+                    return $resource(baseURL+"leadership/:id",null,  {'update':{method:'PUT' }});
+            };
 
             return $resource(baseURL+"leadership/:id");
 
         }])
-
         .factory('feedbackFactory', ['$resource', 'baseURL', function($resource,baseURL) {
 
 

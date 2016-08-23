@@ -177,9 +177,9 @@ menuFactory.getDishes().update({id:$scope.dish.id},$scope.dish);
                 $scope.promotion = menuFactory.getPromotion().get({id:0});
 
             }])
+.controller('AboutController', ['$scope', 'corporateFactory', 'baseURL', function($scope, corporateFactory, baseURL) {
 
-.controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
-
+            $scope.baseURL = baseURL;
             $scope.leaders = corporateFactory.query();
             console.log($scope.leaders);
 
