@@ -40,7 +40,6 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
       }
     }
   })
-
   .state('app.aboutus', {
       url: '/aboutus',
       views: {
@@ -84,7 +83,7 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
            controller:'FavoritesController'
        }
      }
-   });
+   } );
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
 });
