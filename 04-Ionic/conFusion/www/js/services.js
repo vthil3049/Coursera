@@ -25,7 +25,7 @@ angular.module('conFusion.services', ['ngResource'])
   return $resource(baseURL+"feedback/:id");
 
 }])
-.factory('favoriteFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
+.factory('favoriteFactory', ['$resource', 'baseURL', '$localStorage', function ($resource, baseURL, $localStorage) {
   var favFac = {};
   var favorites = [];
 
@@ -35,6 +35,8 @@ angular.module('conFusion.services', ['ngResource'])
       return;
     }
     favorites.push({id: index});
+    $localStorage.storeObject('favorites',favorites); //add to favorites
+    console.log('Storing favorites', favorites);
   };
 
   favFac.deleteFromFavorites = function (index) {
@@ -43,9 +45,13 @@ angular.module('conFusion.services', ['ngResource'])
               favorites.splice(i, 1);
           }
       }
+      $localStorage.storeObject('favorites',favorites); //update the favortites list
+      console.log('Storing favorites', favorites);
   };
 
   favFac.getFavorites = function () {
+      favorites = $localStorage.getObject('favorites','{}');
+      console.log('Retrieving favorites', favorites);
       return favorites;
   };
 

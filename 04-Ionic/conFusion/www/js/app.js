@@ -59,7 +59,18 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
     views: {
       'mainContent': {
         templateUrl: 'templates/home.html',
-        controller: 'IndexController'
+        controller: 'IndexController',
+        resolve: {
+              dish: ['menuFactory', function(menuFactory){
+                  return menuFactory.get({id:0});
+              }],
+              leader: ['corporateFactory', function(corporateFactory){
+                  return corporateFactory.get({id:3});
+              }],
+              promotion: ['promotionFactory', function(promotionFactory){
+                  return promotionFactory.get({id:0});
+              }]
+          }
       }
     }
   })
@@ -68,7 +79,12 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
       views: {
         'mainContent': {
           templateUrl: 'templates/aboutus.html',
-          controller:'AboutController'
+          controller:'AboutController',
+          resolve: {
+              leaders:  ['corporateFactory', function(corporateFactory){
+                return corporateFactory.query();
+              }]
+            }
         }
       }
     })
@@ -85,8 +101,13 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
       views: {
         'mainContent': {
           templateUrl: 'templates/menu.html',
-          controller: 'MenuController'
-        }
+          controller: 'MenuController',
+          resolve: {
+              dishes:  ['menuFactory', function(menuFactory){
+                return menuFactory.query();
+              }]
+            }
+          }
       }
     })
   .state('app.dishdetails', {
@@ -113,7 +134,7 @@ angular.module('conFusion', ['ionic', 'conFusion.controllers', 'conFusion.servic
                dishes:  ['menuFactory', function(menuFactory){
                  return menuFactory.query();
                }],
-                             favorites: ['favoriteFactory', function(favoriteFactory) {
+               favorites: ['favoriteFactory', function(favoriteFactory) {
                    return favoriteFactory.getFavorites();
                }]
            }
